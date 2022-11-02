@@ -9,23 +9,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+    <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
  </head>
 
     <body>
-        <div class="quiz">
-                    <div class="title">Quiz</div>
+        <div class="title">Quiz</div>
+        <div class="quiz" id="drop-item">
 
-                    <button type="button" id="button__create" class="button__create">New quiz</button>
+            <button type="button" id="button__create" class="button__create">New quiz</button>
 
-
-
-                <div class="button__send">
-                    <button type="button" onclick="sendinput();" class="button__ready">Send</button>
-                </div>
         </div>
 
-
-
+        <div class="button__send">
+            <button type="button" onclick="sendinput();" class="button__ready">Send</button>
+        </div>
 
 
 

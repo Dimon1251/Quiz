@@ -16,8 +16,6 @@ let quiz = 0;
 let question = [[10]];
 let answer = [];
 
-/*
-<button type="button" id="${i}" onclick="addquestion(this.id);" class="btn btn-primary">Новый вопрос</button>*/
 
 
 function addcard(){
@@ -276,37 +274,6 @@ function addanswer(value){
 
 }
 
-
-
-
-
-function sendinput(){
-    let data = Array.from(document.querySelectorAll('input')).map(inputElement => inputElement.value);
-    console.log(data);
-    for (let elem of data) {
-        if(elem == "") {
-            alert("All fields must be filled");
-            break;
-        }
-    }
-    elements = document.getElementById('1').getElementsByClassName('form-control');
-    x = 1;
-    let card = {};
-    for (let elem of elements) {
-        alert(elem.value);
-        card[x] = elem.value;
-        x++;
-
-
-    }
-    console.log(card);
-}
-
-
-
-
-
-
 document.addEventListener('click', function (e) {
 
     let closeBtns = document.querySelectorAll('#button-close');
@@ -371,3 +338,57 @@ document.addEventListener('click', function (e) {
         }
     }
 });
+
+
+
+function sendinput(){
+    let input = Array.from(document.querySelectorAll('input')).map(inputElement => inputElement.value);
+    for (let elem of input) {
+        if(elem == "") {
+            alert("All fields must be filled");
+            break;
+        }
+    }
+    elements = document.getElementsByClassName('quiz__card');
+
+    let em = 5;
+    let ix = 0;
+    var data = [];
+    var data1 = [];
+
+
+    for (let elem of elements) {
+
+        data[ix] = {};
+        data[ix].name = elem.childNodes[0].childNodes[0].value;
+        data[ix].mas = [];
+
+
+        for (q = 0; q < elem.childNodes.length-2; q++)
+        {
+            data[ix].mas[q] = {};
+            data[ix].mas[q].question = (elem.childNodes[1].childNodes[0].childNodes[0].value);
+            data[ix].mas[q].ans = [];
+
+            for (i = 0; i < elem.childNodes[1].childNodes[1].childNodes.length-1; i++)
+            {
+                data[ix].mas[q].ans[i] = {};
+                data[ix].mas[q].ans[i].answer = elem.childNodes[1].childNodes[1].childNodes[i].childNodes[0].value;
+                data[ix].mas[q].ans[i].bool = elem.childNodes[1].childNodes[1].childNodes[i].childNodes[1].childNodes[0].checked;
+            }
+        }
+        ix++;
+    }
+    console.log(data);
+}
+
+
+/*--------------------------------DRAG N DROP----------------------------*/
+
+const dropItem = document.getElementById('drop-item');
+
+
+new Sortable(dropItem, {
+    animation: 350,
+    chosenClass: 'sortable-chosen'
+})
