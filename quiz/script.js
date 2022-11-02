@@ -1,25 +1,9 @@
 
-
 let idButton = 1;
-let idQuestion = 1;
-let idAnswer = 1;
-
-
-
-let id = 1;
-
 let i = 1;
-let mas = [];
-var x = 0;
-
-let quiz = 0;
-let question = [[10]];
-let answer = [];
-
-
 
 function addcard(){
-    let card = `
+    /*let card = `
         <div class="quiz__card" id="${i}">
 
             <div class="quiz__top">
@@ -58,9 +42,7 @@ function addcard(){
             </div>
             <button type="button" id="button-addquestion" class="btn-primary">Новый вопрос</button>
             </div>
-        `;
-
-/*	$('body').append(card);*/
+        `;*/
 
     let quizcard = document.createElement('div');
     quizcard.classList.add('quiz__card');
@@ -367,14 +349,14 @@ function sendinput(){
         for (q = 0; q < elem.childNodes.length-2; q++)
         {
             data[ix].mas[q] = {};
-            data[ix].mas[q].question = (elem.childNodes[1].childNodes[0].childNodes[0].value);
+            data[ix].mas[q].question = (elem.childNodes[q+1].childNodes[0].childNodes[0].value);
             data[ix].mas[q].ans = [];
 
-            for (i = 0; i < elem.childNodes[1].childNodes[1].childNodes.length-1; i++)
+            for (i = 0; i < elem.childNodes[q+1].childNodes[1].childNodes.length-1; i++)
             {
                 data[ix].mas[q].ans[i] = {};
-                data[ix].mas[q].ans[i].answer = elem.childNodes[1].childNodes[1].childNodes[i].childNodes[0].value;
-                data[ix].mas[q].ans[i].bool = elem.childNodes[1].childNodes[1].childNodes[i].childNodes[1].childNodes[0].checked;
+                data[ix].mas[q].ans[i].answer = elem.childNodes[q+1].childNodes[1].childNodes[i].childNodes[0].value;
+                data[ix].mas[q].ans[i].bool = elem.childNodes[q+1].childNodes[1].childNodes[i].childNodes[1].childNodes[0].checked;
             }
         }
         ix++;
@@ -385,8 +367,7 @@ function sendinput(){
 
 /*--------------------------------DRAG N DROP----------------------------*/
 
-const dropItem = document.getElementById('drop-item');
-
+let dropItem = document.getElementById('drop-item');
 
 new Sortable(dropItem, {
     animation: 350,
