@@ -44,8 +44,16 @@ function addcard(){
             </div>
         `;*/
 
+    let li = document.createElement('li');
+    li.classList.add("glyphicon", "glyphicon-move", "my-handle");
+
+    let drag = document.createElement('span');
+    drag.classList.add("list-group-item");
+    /*drag.aria-hidden = "true";*/
+
+
     let quizcard = document.createElement('div');
-    quizcard.classList.add('quiz__card');
+    quizcard.classList.add("quiz__card");
     quizcard.id = i;
 
     let quiztop = document.createElement('div');
@@ -135,6 +143,9 @@ function addcard(){
     quiztop.append(title);
     quiztop.append(buttonclose2);
 
+    li.append(drag);
+
+    quizcard.append(li);
     quizcard.append(quiztop);
     quizcard.append(question);
     quizcard.append(addquestion);
@@ -333,10 +344,8 @@ function sendinput(){
     }
     elements = document.getElementsByClassName('quiz__card');
 
-    let em = 5;
     let ix = 0;
     var data = [];
-    var data1 = [];
 
 
     for (let elem of elements) {
@@ -370,6 +379,7 @@ function sendinput(){
 let dropItem = document.getElementById('drop-item');
 
 new Sortable(dropItem, {
+    handle: '.my-handle',
     animation: 350,
     chosenClass: 'sortable-chosen'
 })

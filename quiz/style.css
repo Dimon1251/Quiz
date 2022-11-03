@@ -209,3 +209,10 @@
 		color: #FFFFFF;
 		border-radius: 0.5rem;
 	}
+
+
+
+.my-handle {
+  cursor: move;
+  cursor: -webkit-grabbing;
+}
